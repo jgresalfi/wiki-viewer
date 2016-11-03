@@ -1,0 +1,11 @@
+/* Main Styles */
+
+.wiki-header {
+	margin: 10vh 5vw 0 0;
+	background-color: #ffe066;
+	color: #2b3e50;
+	width: 300px;
+	height: 300px;
+	border-radius: 200px;
+	padding-top: 90px;
+}
