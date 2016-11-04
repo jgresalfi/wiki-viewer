@@ -17,5 +17,17 @@
 }
 
 .search-container {
-	padding-top: 65px;
+    padding-top: 65px;
+}
+
+input {
+    background-color: #2b3e50;
+    border: none;
+    transition: background-color 1s ease-in;
+}
+
+.reveal {
+    background-color: #ffe066;
+    border: none;
+    transition: background-color 1s ease-out;
 }

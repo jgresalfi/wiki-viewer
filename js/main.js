@@ -1,11 +1,13 @@
 'use strict';
 
-function searchReveal() {
-	alert("This sucker's working!");
-}
+document.addEventListener("DOMContentLoaded", function() {
+    var clicker = document.querySelector("#clicker"),
+        searchBox = document.querySelector("#search");
 
-document.addEventListener("DOMContentLoaded", function(){
-	var searchBtn = document.querySelector("#clicker");
-	console.log(searchBtn);
-	searchBtn.onclick = searchReveal;
+    function searchReveal() {
+        console.log("searchReveal function firing!");
+        searchBox.classList.toggle("reveal");
+    }
+
+    clicker.onclick = searchReveal;
 })
