@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     //Fires getResponse() and responseWrite() to get data and write it to page
-    searchTxt.onchange = getResponse(ajaxURL, responseWrite);
+    searchTxt.onchange = function() { getResponse(ajaxURL, responseWrite); };
 
 
 
