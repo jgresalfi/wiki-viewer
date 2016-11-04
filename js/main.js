@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function getResponse(url, callback) {
         var xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
+        xhr.withCredentials = false;
         xhr.open('GET', url);
         xhr.onload = function() {
             if (this.status >= 200 && this.status < 400) {
@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } //End getResponse
 
     function responseWrite(data) {
+        console.log(JSON.parse(data));
         var resultDiv = document.getElementById("result"),
             artFrag = document.createDocumentFragment(),
             artTitle = document.createElement("h3"),
