@@ -1,6 +1,12 @@
 /* Main Styles */
 
+h2 {
+    font-size: 35px;
+}
+
 .wiki-header {
+    font-family: 'Bangers', cursive;
+    padding: 0 20px;
     margin: 45px 0 0 25px;
     background-color: #ffe066;
     color: #2b3e50;
@@ -21,13 +27,27 @@
 }
 
 input {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    padding-left: 15px;
+    width: 335px;
+    height: 50px;
+    border-radius: 25px;
     background-color: #2b3e50;
     border: none;
-    transition: background-color 1s ease-in;
+    transition: background-color .5s ease-in;
 }
 
 .reveal {
     background-color: #ffe066;
     border: none;
-    transition: background-color 1s ease-out;
+    transition: background-color .5s ease-out;
+}
+
+/* Chrome blue border fix */
+
+button:active,
+input:focus {
+    border: none;
+    outline: none;
 }
