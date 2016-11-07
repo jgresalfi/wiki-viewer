@@ -31,31 +31,37 @@ document.addEventListener("DOMContentLoaded", function() {
             xhr.send();
         } //End getResponse
 
+        var resultDiv = document.getElementById("result"),
+            searchField = document.getElementById("search");
+
+
         function responseWrite(response) {
             console.dir(JSON.parse(response));
-            var resultDiv = document.getElementById("result"),
-                data = JSON.parse(response);
+
+            var data = JSON.parse(response);
             if (data.query.search.length === 0) {
                 resultDiv.innerHTML = "Please try your search again...";
             } else {
                 for (var i = 0; i < data.query.search.length; i++) {
-                    var artFrag = document.createDocumentFragment(),
-                        artTitle = document.createElement("h3"),
-                        artSnip = document.createElement("p");
+                    var artTitle = document.createElement("h3"),
+                        artSnip = document.createElement("p"),
+                        artDiv = document.createElement("div");
                     artTitle.innerHTML = data.query.search[i].title;
                     artSnip.innerHTML = data.query.search[i].snippet;
-                    artFrag.append(artTitle, artSnip);
-                    resultDiv.append(artFrag);
+                    artDiv.append(artTitle, artSnip);
+                    resultDiv.append(artDiv);
                 }
+
             }
 
         } //End responseWrite callback
 
         //Fires getResponse() and responseWrite() to get data and write it to page
-        var searchField = document.getElementById("search");
+
         searchField.onchange = function() {
             var ajaxURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchField.value + "&format=json&utf8=";
-            console.log("SearchCont => " + searchField.value);
             getResponse(ajaxURL, responseWrite);
+            searchField.value = searchField.defaultValue;
+            resultDiv.innerHTML = "";
         };
     }) //End docready
