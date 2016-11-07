@@ -12,7 +12,7 @@ h2 {
     color: #2b3e50;
     width: 300px;
     height: 300px;
-    border-radius: 200px;
+    border-radius: 50%;
 }
 
 .wiki-entry {
@@ -46,6 +46,16 @@ h2 {
 .mag-glass {
     width: 65px;
     height: 65px;
+}
+
+.dice-roll {
+    margin: 0 0 10px 0;
+    width: 40px;
+    height: 40px;
+}
+
+.mag-glass,
+.dice-roll {
     fill: #2b3e50;
 }
 
