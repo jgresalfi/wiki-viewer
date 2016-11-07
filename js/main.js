@@ -4,13 +4,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //Event listener to reveal search field on magnifying glass click
         var clicker = document.getElementById("clicker"),
-            searchBox = document.getElementById("search");
+            searchBox = document.getElementById("search"),
+            randomizer = document.getElementById("randomizer");
 
         function searchReveal() {
             searchBox.classList.toggle("reveal");
         }
 
+        function searchClear() {
+            searchBox.value = searchBox.defaultValue;
+            console.log("Is this thing on?");
+        }
+
         clicker.onclick = searchReveal;
+        randomizer.onlick = searchClear;
         //End search field click event code
 
         //AJAX call and response callback function
@@ -35,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var resultDiv = document.getElementById("result");
 
         function responseWrite(response) {
-            console.dir(JSON.parse(response));
+            // console.log(JSON.parse(response)); - uncomment for Ajax troubleshooting
 
             var data = JSON.parse(response);
             if (data.query.search.length === 0) {
@@ -50,8 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     artLink.setAttribute("href", artURL);
                     artLink.setAttribute("target", "_blank");
                     artLink.classList.add("wiki-link");
-                    console.log(artLink);
-                    artDiv.classList.add("wiki-entry", "col-md-4", "text-center");
+                    artDiv.classList.add("wiki-entry", "col-sm-3", "text-center");
                     artTitle.innerHTML = data.query.search[i].title;
                     artSnip.innerHTML = data.query.search[i].snippet;
                     artDiv.append(artTitle, artSnip, artLink);
