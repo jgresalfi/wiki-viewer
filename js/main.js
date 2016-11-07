@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     var artTitle = document.createElement("h3"),
                         artSnip = document.createElement("p"),
                         artDiv = document.createElement("div");
-                        artDiv.classList.add("wiki-entry", "col-md-4");
+                        artDiv.classList.add("wiki-entry", "col-md-4", "text-center");
                     artTitle.innerHTML = data.query.search[i].title;
                     artSnip.innerHTML = data.query.search[i].snippet;
                     artDiv.append(artTitle, artSnip);
