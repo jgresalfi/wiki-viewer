@@ -16,6 +16,7 @@ h2 {
 }
 
 .wiki-entry {
+    position: relative;
     font-family: 'Oswald', sans-serif;
     font-size: 17px;
     padding: 58px;
@@ -30,6 +31,16 @@ h2 {
 .wiki-entry h3 {
     font-family: 'Bangers', cursive;
     font-size: 30px;
+}
+
+.wiki-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
 }
 
 .mag-glass {

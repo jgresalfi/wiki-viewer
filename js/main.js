@@ -44,11 +44,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 for (var i = 0; i < data.query.search.length; i++) {
                     var artTitle = document.createElement("h3"),
                         artSnip = document.createElement("p"),
-                        artDiv = document.createElement("div");
-                        artDiv.classList.add("wiki-entry", "col-md-4", "text-center");
+                        artDiv = document.createElement("div"),
+                        artLink = document.createElement("a"),
+                        artURL = "https://en.wikipedia.org/wiki/" + data.query.search[i].title;
+                    artLink.setAttribute("href", artURL);
+                    artLink.setAttribute("target", "_blank");
+                    artLink.classList.add("wiki-link");
+                    console.log(artLink);
+                    artDiv.classList.add("wiki-entry", "col-md-4", "text-center");
                     artTitle.innerHTML = data.query.search[i].title;
                     artSnip.innerHTML = data.query.search[i].snippet;
-                    artDiv.append(artTitle, artSnip);
+                    artDiv.append(artTitle, artSnip, artLink);
                     resultDiv.append(artDiv);
                 }
 
