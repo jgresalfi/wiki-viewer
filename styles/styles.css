@@ -92,6 +92,8 @@ input {
 }
 
 #contButton {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
     position: absolute;
     top: -200px;
     right: 300px;

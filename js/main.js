@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function searchReveal() {
             searchBox.classList.toggle("reveal");
+            searchBox.focus();
         }
 
         function searchClear() {
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 if (data.query.searchinfo.totalhits > 12) {
                     contBtn.setAttribute("id", "contButton");
-                    contBtn.setAttribute("value", "More results...");
+                    contBtn.innerHTML = "More results...";
                     contDiv.append(contBtn);
                 }
 
