@@ -31,16 +31,15 @@ document.addEventListener("DOMContentLoaded", function() {
             xhr.send();
         } //End getResponse
 
-        var resultDiv = document.getElementById("result"),
-            searchField = document.getElementById("search");
-
+        //Callback function after ajax data is returned to write response to page
+        var resultDiv = document.getElementById("result");
 
         function responseWrite(response) {
             console.dir(JSON.parse(response));
 
             var data = JSON.parse(response);
             if (data.query.search.length === 0) {
-                resultDiv.innerHTML = "Please try your search again...";
+                searchBox.placeholder = "Please try your search again...";
             } else {
                 for (var i = 0; i < data.query.search.length; i++) {
                     var artTitle = document.createElement("h3"),
@@ -58,11 +57,11 @@ document.addEventListener("DOMContentLoaded", function() {
         } //End responseWrite callback
 
         //Fires getResponse() and responseWrite() to get data and write it to page
-
-        searchField.onchange = function() {
-            var ajaxURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchField.value + "&format=json&utf8=";
+        searchBox.onchange = function() {
+            var ajaxURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchBox.value + "&format=json&utf8=";
             getResponse(ajaxURL, responseWrite);
-            searchField.value = searchField.defaultValue;
+            searchBox.value = searchBox.defaultValue;
+            searchBox.placeholder = "Search...";
             resultDiv.innerHTML = "";
         };
     }) //End docready
