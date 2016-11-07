@@ -4,6 +4,10 @@ h2 {
     font-size: 35px;
 }
 
+h3 {
+    margin: 0 0 15px 0;
+}
+
 .wiki-header {
     font-family: 'Bangers', cursive;
     padding: 65px 20px;
@@ -18,19 +22,19 @@ h2 {
 .wiki-entry {
     position: relative;
     font-family: 'Oswald', sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     padding: 58px;
     margin: 45px 0 0 70px;
     background-color: #ffe066;
     color: #2b3e50;
-    width: 350px;
-    height: 350px;
+    width: 325px;
+    height: 325px;
     border-radius: 50%;
 }
 
 .wiki-entry h3 {
     font-family: 'Bangers', cursive;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .wiki-link {
@@ -80,6 +84,23 @@ input {
     background-color: #ffe066;
     border: none;
     transition: background-color .5s ease-out;
+}
+
+#continue-button {
+    position: relative;
+    height: 150px;
+}
+
+#contButton {
+    position: absolute;
+    top: -200px;
+    right: 300px;
+    background-color: #ffe066;
+    color: #2b3e50;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: none;
 }
 
 ::-webkit-input-placeholder {

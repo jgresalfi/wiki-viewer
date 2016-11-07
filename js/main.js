@@ -42,9 +42,11 @@ document.addEventListener("DOMContentLoaded", function() {
         var resultDiv = document.getElementById("result");
 
         function responseWrite(response) {
-            // console.log(JSON.parse(response)); - uncomment for Ajax troubleshooting
+            console.log(JSON.parse(response));
 
-            var data = JSON.parse(response);
+            var data = JSON.parse(response),
+                contBtn = document.createElement("button"),
+                contDiv = document.getElementById("continue-button");
             if (data.query.search.length === 0) {
                 searchBox.placeholder = "Please try your search again...";
             } else {
@@ -54,14 +56,20 @@ document.addEventListener("DOMContentLoaded", function() {
                         artDiv = document.createElement("div"),
                         artLink = document.createElement("a"),
                         artURL = "https://en.wikipedia.org/wiki/" + data.query.search[i].title;
+
                     artLink.setAttribute("href", artURL);
                     artLink.setAttribute("target", "_blank");
                     artLink.classList.add("wiki-link");
-                    artDiv.classList.add("wiki-entry", "col-sm-3", "text-center");
+                    artDiv.classList.add("wiki-entry", "col-sm-2", "text-center");
                     artTitle.innerHTML = data.query.search[i].title;
                     artSnip.innerHTML = data.query.search[i].snippet;
                     artDiv.append(artTitle, artSnip, artLink);
                     resultDiv.append(artDiv);
+                }
+                if (data.query.searchinfo.totalhits > 12) {
+                    contBtn.setAttribute("id", "contButton");
+                    contBtn.setAttribute("value", "More results...");
+                    contDiv.append(contBtn);
                 }
 
             }
@@ -70,10 +78,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //Fires getResponse() and responseWrite() to get data and write it to page
         searchBox.onchange = function() {
-            var ajaxURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchBox.value + "&format=json&utf8=";
+            var ajaxURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchBox.value + "&srlimit=12&format=json&continue=";
             getResponse(ajaxURL, responseWrite);
             searchBox.value = searchBox.defaultValue;
             searchBox.placeholder = "Search...";
             resultDiv.innerHTML = "";
         };
+
+        //Search results continue button
+
+
     }) //End docready
