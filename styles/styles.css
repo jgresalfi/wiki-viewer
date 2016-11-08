@@ -80,6 +80,19 @@ input {
     transition: background-color .5s ease-in;
 }
 
+.search-reset {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    margin: 0 0 10px 25px;
+    background-color: #2b3e50;
+    transition: background-color .5s ease-in;
+    color: #2b3e50;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: none;
+}
+
 .reveal {
     background-color: #ffe066;
     border: none;
@@ -126,6 +139,7 @@ input {
 
 /* Chrome blue border fix */
 
+button,
 button:active,
 input:focus {
     border: none;

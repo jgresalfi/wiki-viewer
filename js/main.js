@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function searchReveal() {
             searchBox.classList.toggle("reveal");
+            searchReset.classList.toggle("reveal");
             searchBox.focus();
         }
 
@@ -40,13 +41,16 @@ document.addEventListener("DOMContentLoaded", function() {
         } //End getResponse
 
         //Callback function after ajax data is returned to write response to page
-        var resultDiv = document.getElementById("result");
+        var resultDiv = document.getElementById("result"),
+            contBtn = document.createElement("button"),
+            contRes,
+            searchReset = document.getElementById("searchReset");
 
         function responseWrite(response) {
             console.log(JSON.parse(response));
+            contRes = JSON.parse(response);
 
             var data = JSON.parse(response),
-                contBtn = document.createElement("button"),
                 contDiv = document.getElementById("continue-button");
             if (data.query.search.length === 0) {
                 searchBox.placeholder = "Please try your search again...";
@@ -81,12 +85,23 @@ document.addEventListener("DOMContentLoaded", function() {
         searchBox.onchange = function() {
             var ajaxURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchBox.value + "&srlimit=12&format=json&continue=";
             getResponse(ajaxURL, responseWrite);
-            searchBox.value = searchBox.defaultValue;
-            searchBox.placeholder = "Search...";
             resultDiv.innerHTML = "";
         };
 
         //Search results continue button
+        contBtn.onclick = function() {
+            var contURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=12&format=json&sroffset=" + contRes.continue.sroffset + "&continue=-||&srsearch=" + searchBox.value;
+            console.log(contURL);
+            resultDiv.innerHTML = "";
+            getResponse(contURL, responseWrite);
+        }
 
+        //Search field reset button
+        searchReset.onclick = function() {
+            searchBox.value = searchBox.defaultValue;
+            resultDiv.innerHTML = "";
+            contBtn.remove();
+            searchBox.placeholder = "Search...";
+        }
 
     }) //End docready
