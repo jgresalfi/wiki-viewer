@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Wikiviewer</title>
+    <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Oswald" rel="stylesheet">
@@ -13,8 +14,8 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6 col-centered">
-                <div class="col-sm-6 col-centered">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-centered">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-centered">
                     <div class="wiki-header text-center">
                         <h2>Super-colossal Wikipedia Lookerupper</h2>
                         <a id="clicker">
@@ -32,17 +33,17 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-sm-12 search-container">
+                <div class="col-sm-12 col-md-12 col-lg-12 search-container">
                     <input id="search" class="search-field" type="text" placeholder="Search...">
                     <button id="searchReset" class="search-reset">Clear Search</button>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div id="result" class="col-sm-8 col-centered"></div>
+            <div id="result" class="col-sm-8 col-md-8 col-lg-8 col-centered"></div>
         </div>
         <div class="row">
-          <div id="continue-button" class="col-sm-4 col-sm-offset-9 text-center"></div>
+            <div id="continue-button" class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-9 text-center"></div>
         </div>
         <script src="js/main.js"></script>
 </body>

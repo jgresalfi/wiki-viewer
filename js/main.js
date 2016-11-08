@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
         var resultDiv = document.getElementById("result"),
             contBtn = document.createElement("button"),
             contRes,
-            searchReset = document.getElementById("searchReset");
+            searchReset = document.getElementById("searchReset"),
+            contBtnCont = document.getElementById("continue-button");
 
         function responseWrite(response) {
             console.log(JSON.parse(response));
@@ -90,8 +91,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //Search results continue button
         contBtn.onclick = function() {
+
             var contURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=12&format=json&sroffset=" + contRes.continue.sroffset + "&continue=-||&srsearch=" + searchBox.value;
-            console.log(contURL);
+            contBtnCont.removeChild(contBtn);
             resultDiv.innerHTML = "";
             getResponse(contURL, responseWrite);
         }
