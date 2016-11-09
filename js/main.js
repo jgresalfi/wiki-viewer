@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function searchClear() {
             searchBox.value = searchBox.defaultValue;
-            console.log("Is this thing on?");
         }
 
         clicker.onclick = searchReveal;
@@ -41,18 +40,16 @@ document.addEventListener("DOMContentLoaded", function() {
         } //End getResponse
 
         //Callback function after ajax data is returned to write response to page
-        var resultDiv = document.getElementById("result"),
+        var data,
+            resultDiv = document.getElementById("result"),
             contBtn = document.createElement("button"),
-            contRes,
             searchReset = document.getElementById("searchReset"),
             contBtnCont = document.getElementById("continue-button");
 
         function responseWrite(response) {
             console.log(JSON.parse(response));
-            contRes = JSON.parse(response);
-
-            var data = JSON.parse(response),
-                contDiv = document.getElementById("continue-button");
+            var contDiv = document.getElementById("continue-button");
+            data = JSON.parse(response);
             if (data.query.search.length === 0) {
                 searchBox.placeholder = "Please try your search again...";
             } else {
@@ -92,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
         //Search results continue button
         contBtn.onclick = function() {
 
-            var contURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=12&format=json&sroffset=" + contRes.continue.sroffset + "&continue=-||&srsearch=" + searchBox.value;
+            var contURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=12&format=json&sroffset=" + data.continue.sroffset + "&continue=-||&srsearch=" + searchBox.value;
             contBtnCont.removeChild(contBtn);
             resultDiv.innerHTML = "";
             getResponse(contURL, responseWrite);
